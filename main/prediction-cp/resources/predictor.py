@@ -11,7 +11,8 @@ def predict(dataset):
         file_path = os.path.join(model_repo, "model.h5")
         model = load_model(file_path)
         val_set2 = dataset.copy()
-        result = model.predict(dataset)
+        data_array = dataset.values
+        result = model.predict(data_array)
         y_classes = result.argmax(axis=-1)
         val_set2['class'] = y_classes.tolist()
         dic = val_set2.to_dict(orient='records')

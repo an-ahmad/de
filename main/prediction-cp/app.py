@@ -11,7 +11,7 @@ app.config["DEBUG"] = True
 def predict_perf(model):
     content = request.get_json()
     df = pd.read_json(json.dumps(content), orient='records')
-    if model == "mlp":
+    if model == "flower":
         js = predictor.predict(df)
         resp = Response(js, status=200, mimetype='application/json')
         resp.headers['Access-Control-Allow-Origin'] = '*'

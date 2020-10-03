@@ -17,7 +17,7 @@ def train(dataset):
     X = dataset[:, 0:4]
     Y = dataset[:, 4]
     encoder = OneHotEncoder(sparse=False)
-    y = encoder.fit_transform(Y)
+    y = encoder.fit_transform(Y.reshape(-1, 1))
     #splits
     train_x, test_x, train_y, test_y = train_test_split(X, y, test_size=0.20)
     model = Sequential()
